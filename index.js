@@ -2,13 +2,6 @@ const pool = require("./connectDB");
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const https = require('https');
-const fs = require('fs');
-
-const options = {
-    key: fs.readFileSync('/etc/letsencrypt/live/doubleyinqangledog.duckdns.org/privkey.pem'), // ใบรับรองส่วนตัว
-    cert: fs.readFileSync('/etc/letsencrypt/live/doubleyinqangledog.duckdns.org/cert.pem'), // ใบรับรอง SSL
-  };
 
 const app = express();
 app.use(cors(
@@ -37,6 +30,7 @@ app.get('/get_messages', async (req, res) => {
     }
 });
 
-https.createServer(options, app).listen(3000, () => {
-    console.log(`API server running on https://localhost:3000`);
-  });
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log("Server is running on port", port);
+});
