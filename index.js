@@ -2,6 +2,8 @@ const pool = require("./connectDB");
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const https = require('https');
+const fs = require('fs');
 
 const options = {
     key: fs.readFileSync('/etc/letsencrypt/live/doubleyinqangledog.duckdns.org/privkey.pem'), // ใบรับรองส่วนตัว
