@@ -8,7 +8,6 @@ app.use(cors(
     {
         origin: "*",
         methods: ['GET', 'POST', 'OPTIONS'],
-        allowedHeaders: ['Origin', 'Content-Type', 'Accept']
     }
 ));
 app.use(bodyParser.json());
