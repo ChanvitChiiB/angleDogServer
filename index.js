@@ -7,10 +7,20 @@ const app = express();
 app.use(cors(
     {
         origin: "*",
-        methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+        methods: ['GET', 'POST', 'OPTIONS'],
+        allowedHeaders: ['Origin', 'Content-Type', 'Accept']
     }
 ));
 app.use(bodyParser.json());
+
+app.options('*', (req, res) => {
+    res.set({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Origin, Content-Type, Accept'
+    });
+    res.sendStatus(200);
+});
 
 app.post('/insert_message', async (req, res) => {
     try {
