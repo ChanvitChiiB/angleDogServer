@@ -5,7 +5,7 @@ const cors = require("cors");
 
 const app = express();
 app.use(cors({
-    origin: "https://adoginadream.onrender.com",  // กำหนดให้อนุญาตเฉพาะ origin นี้
+    origin: "*",  // กำหนดให้อนุญาตเฉพาะ origin นี้
     methods: ['GET', 'POST'],  // รองรับเฉพาะ GET และ POST
 }));
 app.use(bodyParser.json());
