@@ -4,10 +4,10 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
-app.use(cors({
-    origin: "*",  // กำหนดให้อนุญาตเฉพาะ origin นี้
-    methods: ['GET', 'POST'],  // รองรับเฉพาะ GET และ POST
-}));
+// app.use(cors({
+//     origin: "*",  // กำหนดให้อนุญาตเฉพาะ origin นี้
+//     methods: ['GET', 'POST'],  // รองรับเฉพาะ GET และ POST
+// }));
 app.use(bodyParser.json());
 
 app.post('/insert_message', async (req, res) => {
