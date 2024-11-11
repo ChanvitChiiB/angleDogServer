@@ -4,22 +4,11 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
-app.use(cors(
-    {
-        origin: "*",
-        methods: ['GET', 'POST', 'OPTIONS'],
-    }
-));
+app.use(cors({
+    origin: "https://adoginadream.onrender.com",  // กำหนดให้อนุญาตเฉพาะ origin นี้
+    methods: ['GET', 'POST'],  // รองรับเฉพาะ GET และ POST
+}));
 app.use(bodyParser.json());
-
-app.options('*', (req, res) => {
-    res.set({
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Origin, Content-Type, Accept'
-    });
-    res.sendStatus(200);
-});
 
 app.post('/insert_message', async (req, res) => {
     try {
